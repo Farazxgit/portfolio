@@ -6,8 +6,9 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
+import { Suspense } from 'react'
 
-export default function page() {
+function ResetPasswordForm() {
 
     const router = useRouter();
     const [message, setMessage] = useState('');
@@ -144,4 +145,16 @@ export default function page() {
       </div>
     </div>
   )
+}
+
+export default function ResetPassword() {
+    return (
+        <Suspense fallback={
+            <div className='bg-gray-950 w-full min-h-screen flex items-center justify-center'>
+                <p className='text-white'>Loading...</p>
+            </div>
+        }>
+            <ResetPasswordForm />
+        </Suspense>
+    )
 }
