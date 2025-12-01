@@ -48,8 +48,8 @@ export async function POST(request : NextRequest) {
         {status : 400}
       )
     }
-    // const saltRounds = 10;
-    // const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
     // inserting new data now 
 
     const inserturl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/users`
@@ -80,7 +80,7 @@ export async function POST(request : NextRequest) {
 
     // return
     const newUser = await insertResponse.json()
-    
+
     return NextResponse.json(
       {message : "Account created successfully",
       user:{

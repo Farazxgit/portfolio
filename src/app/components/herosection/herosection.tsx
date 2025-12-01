@@ -1,11 +1,32 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Facebook, Twitter, Linkedin, Github, Twitch } from 'lucide-react'
 import { ChevronRight, Zap } from 'lucide-react'
 
 export default function Herosection() {
+    const [user, setUser] = useState<{ email: string; fullName: string } | null>(null);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch('/api/auth/me');
+                console.log(response)
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data)
+                    setUser(data.user);
+                }
+            } catch (error) {
+                console.log('Not logged in');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUser();
+    }, []);
     return (
     
     <section className='relative flex flex-col lg:flex-row justify-center h-full lg:h-screen  overflow-hidden'>
@@ -32,8 +53,15 @@ export default function Herosection() {
         flex flex-col lg:justify-between
         lg:overflow-visible'>
             
-            <h1 className='text-8xl lg:text-[200px] text-white lg:text-center
-                translate-y-20'>Faraz Ahmed</h1>
+                        <h1 className='text-8xl lg:text-[200px] text-white lg:text-center translate-y-20'>
+                            {/* {loading ? (
+                                // skeleton placeholder to avoid flashing default name
+                                <span className='inline-block w-52 lg:w-96 h-[1.2em] b animate-pulse rounded' aria-hidden="true" />
+                            ) : (
+                                (user?.fullName ?? (user as any)?.fullname ?? (user as any)?.full_name ?? 'Faraz Ahmed')
+                            )} */}
+                            Faraz Ahmed
+                        </h1>
 
             <div className='flex flex-col lg:flex-row lg:flex-wrap gap-6 lg:gap-0 
             lg:justify-between lg:items-end lg:translate-y-0'>
