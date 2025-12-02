@@ -32,15 +32,15 @@ export default function Herosection() {
     <section className='relative flex flex-col lg:flex-row justify-center h-full lg:h-screen  overflow-hidden'>
         
         <div className='hidden lg:flex absolute inset-0 z-0 '>
-            <img src="hero-bg.png" className="w-full h-screen" alt="" />
+            <img src="/hero-bg.png" className="w-full h-screen" alt="" />
         </div>
         
         <div className='hidden lg:flex absolute z-8'>
-            <img src="color.png" className="w-full h-screen" alt="" />  
+            <img src="/color.png" className="w-full h-screen" alt="" />  
         </div>
         
         <div className='hidden lg:flex absolute z-11'>
-            <img src="man.png" className="-translate-y-[50px]" alt=""  />
+            <img src="/man.png" className="-translate-y-[50px]" alt=""  />
         </div>
 
         <div className='relative z-10 lg:w-full 
