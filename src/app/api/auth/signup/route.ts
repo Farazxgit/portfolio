@@ -65,7 +65,7 @@ export async function POST(request : NextRequest) {
       body : JSON.stringify ({
         full_name : fullname,
         email : email.toLowerCase(),
-        password_hash: password,
+        password_hash: hashedPassword,
       })
     })
 
