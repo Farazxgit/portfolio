@@ -45,7 +45,7 @@ export default function Navbar() {
             <nav className='flex justify-between items-center lg:justify-between lg:items-center m-5 lg:m-15 lg:py-7 absolute left-0 right-0 z-20 pr-4 '>
                 
                 <div>
-                    <img src="Logo-white.png" alt="" className='w-20 h-8 '/>
+                    <img src="/Logo-white.png" alt="" className='w-20 h-8 '/>
                 </div>
 
                 <div className={`${isMobileOpen ? 'flex' : 'hidden'} lg:flex flex-col lg:flex-row fixed lg:static inset-0 lg:inset-auto h-full lg:h-auto w-full lg:w-auto bg-white/95 lg:bg-transparent backdrop-blur-lg lg:backdrop-blur-none pt-5 lg:pt-0 gap-0 lg:gap-6 text-black lg:text-white z-50 lg:z-auto overflow-y-auto`}

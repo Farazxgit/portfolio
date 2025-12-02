@@ -1,8 +1,10 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Toastify from '@/components/ui/toastify'
-
+import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,10 +35,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar/>
         {children}
         <Toastify />
+        <Footer/>
+       
 
       </body>
+      
     </html>
   );
 }
