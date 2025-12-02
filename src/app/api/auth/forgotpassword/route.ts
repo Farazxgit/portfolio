@@ -66,7 +66,7 @@ export async function POST(request : NextRequest){
 
     // 3. Send email
     const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/auth/resetpassword?token=${resetToken}`;
-
+    console.log('Reset link:', resetLink)
     await resend.emails.send({
       from: 'onboarding@resend.dev', // use this for testing, later change to your domain
       to: email,
