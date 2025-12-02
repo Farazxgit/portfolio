@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { randomBytes } from 'crypto';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { sendMail } from "@/lib/send-mail";
 
 export async function POST(request : NextRequest){
 
@@ -63,14 +62,16 @@ export async function POST(request : NextRequest){
         reset_token_expiry: resetTokenExpiry
       })
     });
-
+   
     // 3. Send email
     const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/auth/resetpassword?token=${resetToken}`;
-    console.log('Reset link:', resetLink)
-    await resend.emails.send({
-      from: 'onboarding@resend.dev', // use this for testing, later change to your domain
-      to: email,
+    // console.log('Reset link:', resetLink)
+
+    await sendMail({
+      email: process.env.NEXT_SERVER_USERNAME,
+      sendTo: email,
       subject: 'Reset Your Password',
+      text : '',
       html: `
         <h2>Password Reset Request</h2>
         <p>Click the link below to reset your password:</p>
@@ -84,6 +85,7 @@ export async function POST(request : NextRequest){
 
 
     }catch (error){
+        console.log('Full error:', error);
         return NextResponse.json(
             {error : "Internal Server Error"},
             {status : 500}
